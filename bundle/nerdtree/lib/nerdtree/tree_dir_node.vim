@@ -431,6 +431,10 @@ function! s:TreeDirNode._initChildren(silent)
         endtry
     endfor
 
+<<<<<<< HEAD
+=======
+    let g:NERDTreeOldSortOrder = g:NERDTreeSortOrder
+>>>>>>> 195a18e6b9cc0f7d8e508bb9f43599bea98e5f3c
     call self.sortChildren()
 
     call nerdtree#echo('')

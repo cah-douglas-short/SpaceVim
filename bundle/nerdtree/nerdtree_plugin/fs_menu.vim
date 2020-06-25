@@ -34,6 +34,13 @@ if executable('xdg-open')
     call NERDTreeAddMenuItem({'text': '(o)pen the current node with system editor', 'shortcut': 'o', 'callback': 'NERDTreeExecuteFileLinux'})
 endif
 
+<<<<<<< HEAD
+=======
+if nerdtree#runningWindows()
+    call NERDTreeAddMenuItem({'text': '(o)pen the current node with system editor', 'shortcut': 'o', 'callback': 'NERDTreeExecuteFileWindows'})
+endif
+
+>>>>>>> 195a18e6b9cc0f7d8e508bb9f43599bea98e5f3c
 if g:NERDTreePath.CopyingSupported()
     call NERDTreeAddMenuItem({'text': '(c)opy the current node', 'shortcut': 'c', 'callback': 'NERDTreeCopyNode'})
 endif
@@ -451,4 +458,18 @@ function! NERDTreeExecuteFileLinux()
     call system('xdg-open ' . shellescape(l:node.path.str()))
 endfunction
 
+<<<<<<< HEAD
+=======
+" FUNCTION: NERDTreeExecuteFileWindows() {{{1
+function! NERDTreeExecuteFileWindows()
+    let l:node = g:NERDTreeFileNode.GetSelected()
+
+    if empty(l:node)
+        return
+    endif
+
+    call system('cmd.exe /c start "" ' . shellescape(l:node.path.str()))
+endfunction
+
+>>>>>>> 195a18e6b9cc0f7d8e508bb9f43599bea98e5f3c
 " vim: set sw=4 sts=4 et fdm=marker:

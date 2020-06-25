@@ -45,7 +45,11 @@ function! nerdtree#slash() abort
 endfunction
 
 "FUNCTION: nerdtree#and(x,y) {{{2
+<<<<<<< HEAD
 " Implements and() function for Vim <= 7.2
+=======
+" Implements and() function for Vim <= 7.4
+>>>>>>> 195a18e6b9cc0f7d8e508bb9f43599bea98e5f3c
 function! nerdtree#and(x,y) abort
     if exists('*and')
         return and(a:x, a:y)

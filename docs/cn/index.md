@@ -11,7 +11,7 @@ lang: zh
 [![Version](https://img.shields.io/badge/version-1.5.0--dev-8700FF.svg)](https://github.com/SpaceVim/SpaceVim/releases)
 [![GPLv3 License](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://github.com/SpaceVim/SpaceVim/blob/master/LICENSE)
 
-![welcome-page](https://user-images.githubusercontent.com/13142418/78467954-f4fe2800-7744-11ea-8b47-0614ddc5d51b.png)
+![welcome-page](https://user-images.githubusercontent.com/13142418/80494420-3925c680-8999-11ea-9652-21e1e5564148.png)
 
 # SpaceVim - 模块化的 Vim IDE
 
@@ -33,7 +33,7 @@ SpaceVim 是一个社区驱动的模块化的 Vim IDE，以模块的方式组织
                <strong><a href="{{ post.url }}">{{ post.title }}</a></strong>
                <br>
                <span class="post-date">{{ post.date | date_to_string }}</span>
-               <p>{{ post.excerpt | truncatewords: 100 }}</p>
+               <p>{{ post.description | truncatewords: 100 }}</p>
                <br>
                <img alt="{{ post.title }}" src="{{ post.image }}">
     {% endfor %}

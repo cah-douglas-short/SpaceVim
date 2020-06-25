@@ -21,14 +21,22 @@ function! SpaceVim#default#options() abort
     set guioptions-=b " Hide bottom scrollbar
     set showtabline=0 " Hide tabline
     set guioptions-=e " Hide tab
-    if s:SYSTEM.isWindows
-      " please install the font in 'Dotfiles\font'
-      set guifont=DejaVu_Sans_Mono_for_Powerline:h11:cANSI:qDRAFT
-    elseif s:SYSTEM.isOSX
-      set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
-    else
-      set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
-    endif
+    try
+      if s:SYSTEM.isWindows
+        " please install the font in 'Dotfiles\font'
+        set guifont=DejaVu_Sans_Mono_for_Powerline:h11:cANSI:qDRAFT
+      elseif s:SYSTEM.isOSX
+        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
+      else
+        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
+      endif
+    catch /^Vim\%((\a\+)\)\=:E518/
+      if has('gui_vimr')
+        " VimR has disabled support for guifont
+      else
+        throw v:exception
+      endif
+    endtry
   endif
 
   " indent use backspace delete indent, eol use backspace delete line at
@@ -152,7 +160,6 @@ function! SpaceVim#default#keyBindings() abort
   " yank and paste
   if has('unnamedplus')
     xnoremap <Leader>y "+y
-    xnoremap <Leader>d "+d
     nnoremap <Leader>p "+p
     let g:_spacevim_mappings.p = ['normal! "+p', 'paste after here']
     nnoremap <Leader>P "+P
@@ -161,7 +168,6 @@ function! SpaceVim#default#keyBindings() abort
     xnoremap <Leader>P "+P
   else
     xnoremap <Leader>y "*y
-    xnoremap <Leader>d "*d
     nnoremap <Leader>p "*p
     let g:_spacevim_mappings.p = ['normal! "*p', 'paste after here']
     nnoremap <Leader>P "*P
@@ -170,6 +176,8 @@ function! SpaceVim#default#keyBindings() abort
     xnoremap <Leader>P "*P
   endif
 
+  xnoremap <silent><Leader>Y :call SpaceVim#plugins#pastebin#paste()<CR>
+  " call SpaceVim#mapping#guide#register_displayname(':call SpaceVim#plugins#pastebin#paste()<CR>', 'copy to pastebin')
 
   " quickfix list movement
   let g:_spacevim_mappings.q = {'name' : '+Quickfix movement'}

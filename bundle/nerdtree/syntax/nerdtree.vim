@@ -22,7 +22,11 @@ syn match NERDTreeLinkDir #.*/ ->#me=e-3 containedin=NERDTreeDir
 "highlighting to conceal the delimiter around the file/dir name
 if has('conceal')
     exec 'syn match NERDTreeNodeDelimiters #\%d' . char2nr(g:NERDTreeNodeDelimiter) . '# conceal containedin=ALL'
+<<<<<<< HEAD
     setlocal conceallevel=3 concealcursor=nvic
+=======
+    setlocal conceallevel=2 concealcursor=nvic
+>>>>>>> 195a18e6b9cc0f7d8e508bb9f43599bea98e5f3c
 else
     exec 'syn match NERDTreeNodeDelimiters #\%d' . char2nr(g:NERDTreeNodeDelimiter) . '# containedin=ALL'
     hi! link NERDTreeNodeDelimiters Ignore
